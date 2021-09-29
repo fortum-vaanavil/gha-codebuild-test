@@ -1,6 +1,7 @@
 name: "Submit to CodeBuild"
 on:
   workflow_run:
+    workflows: ["Push"]
 jobs:
   submit:
     steps:
