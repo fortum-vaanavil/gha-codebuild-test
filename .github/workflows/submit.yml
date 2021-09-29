@@ -4,5 +4,6 @@ on:
     workflows: ["Push"]
 jobs:
   submit:
+    runs-on: ubuntu-latest
     steps:
       - run: echo '{{ toJSON(github.event) }}' | jq
