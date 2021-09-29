@@ -1,4 +1,5 @@
 module.exports = ({ github, context }) => {
+  return context.payload;
   const run_id = context.payload.workflow_run.run_id;
   const owner = context.repo.owner;
   const repo = context.repo.repo;
