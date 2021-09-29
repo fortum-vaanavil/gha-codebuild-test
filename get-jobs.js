@@ -21,9 +21,14 @@ module.exports = async ({ github, context }) => {
     repo,
     run_id,
   });
+
+  token = (
+    await github.rest.actions.createRegistrationTokenForRepo({ owner, repo })
+  ).data;
+
   const selfHostedJobs = r.data.jobs
     .filter((j) => j.status === 'queued' && selfHosted.has(j.name))
-    .map(({ id, name }) => ({ id, name }));
+    .map(({ id, name }) => ({ id, name, token }));
 
   return selfHostedJobs;
 };
