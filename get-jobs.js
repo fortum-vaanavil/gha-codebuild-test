@@ -3,10 +3,15 @@ const fs = require('fs');
 
 module.exports = async ({ github, context }) => {
   const doc = yaml.load(fs.readFileSync(context.payload.workflow.path, 'utf8'));
-  const numSelfHosted = Object.values(doc.jobs).reduce(
-    (s, c) => s + (c['runs-on'] === 'self-hosted' ? 1 : 0),
+  const selfHosted = new Set(
+    Object.entries(doc.jobs).reduce(
+      (names, [k, v]) => [
+        ...names,
+        ...(v['runs-on'] === 'self-hosted' ? [k] : []),
+      ],
+      [],
+    ),
   );
-  return numSelfHosted;
 
   const run_id = context.payload.workflow_run.id;
   const owner = context.repo.owner;
@@ -16,6 +21,9 @@ module.exports = async ({ github, context }) => {
     repo,
     run_id,
   });
+  const selfHostedJobs = r.data.jobs
+    .filter((j) => j.status === 'queued' && selfHosted.has(j.name))
+    .map(({ id, name }) => ({ id, name }));
 
-  return r.data.jobs;
+  return selfHostedJobs;
 };
