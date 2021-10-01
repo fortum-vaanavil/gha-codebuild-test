@@ -8,6 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: fortum-vaanavil/gh-runner-codebuild@9cb42594ea1cd7d4be54090ed5e4baa38408766d
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         with:
           github-token: ${{ secrets.PAT }}
           project-name: github-actions
