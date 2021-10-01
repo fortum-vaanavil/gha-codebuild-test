@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: fortum-vaanavil/gh-runner-codebuild@1e80e9fbd39c647b05134ac8b95b93459f19659d
+      - uses: fortum-vaanavil/gh-runner-codebuild@9cb42594ea1cd7d4be54090ed5e4baa38408766d
         with:
           github-token: ${{ secrets.PAT }}
           project-name: github-actions
