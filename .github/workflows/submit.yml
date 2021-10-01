@@ -7,10 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install js-yaml
-      - uses: actions/github-script@v5
+      - uses: fortum-vaanavil/gh-runner-codebuild@1e80e9f
         with:
           github-token: ${{ secrets.PAT }}
-          script: |
-            const script = require('./get-jobs.js')
-            console.log(await script({github, context}))
+          project-name: github-actions
