@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: fortum-vaanavil/gh-runner-codebuild@06ebaf5d104ef2069a3cebfb91d6ab18dd84f0bc
+      - uses: fortum-vaanavil/gh-runner-codebuild@2289c0b21a7cb4e32bae9f2a9e3e6ce1febaa010
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -15,3 +15,4 @@ jobs:
         with:
           github-token: ${{ secrets.PAT }}
           project-name: github-actions
+          image-override: summerwind/actions-runner-dind:v2.283.2-ubuntu-20.04
