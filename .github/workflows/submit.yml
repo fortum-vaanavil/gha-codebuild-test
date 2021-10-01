@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: fortum-vaanavil/gh-runner-codebuild@9cb42594ea1cd7d4be54090ed5e4baa38408766d
+      - uses: fortum-vaanavil/gh-runner-codebuild@06ebaf5d104ef2069a3cebfb91d6ab18dd84f0bc
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
