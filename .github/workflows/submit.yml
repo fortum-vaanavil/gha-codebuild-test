@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: fortum-vaanavil/gh-runner-codebuild@2289c0b21a7cb4e32bae9f2a9e3e6ce1febaa010
+      - uses: fortum-vaanavil/gh-runner-codebuild@9a44b8823c96c7396a824d4f3d8229b4faa407cb
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-          RUNNER_EPHEMERAL: "false"
+          # RUNNER_EPHEMERAL: "false"
         with:
           github-token: ${{ secrets.PAT }}
           project-name: github-actions
-          image-override: summerwind/actions-runner-dind:v2.283.2-ubuntu-20.04
-          env-vars-for-codebuild: RUNNER_EPHEMERAL
+          # image-override: summerwind/actions-runner-dind:v2.283.2-ubuntu-20.04
+          # env-vars-for-codebuild: RUNNER_EPHEMERAL
