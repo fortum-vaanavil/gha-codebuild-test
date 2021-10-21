@@ -3,11 +3,14 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 jobs:
   plan:
     runs-on: self-hosted
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
-      - run: echo "Hello demo"
+      - run: echo "Hello demo runner"
       - run: env | grep "CODEBUILD"
