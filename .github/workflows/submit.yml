@@ -1,7 +1,7 @@
 name: "Submit to CodeBuild"
 on:
   workflow_run:
-    workflows: ["Push"]
+    workflows: ["Hello"]
     types:
       - requested
 jobs:
