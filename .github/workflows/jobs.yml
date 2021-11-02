@@ -1,5 +1,6 @@
-name: "Push"
+name: "Hello"
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -9,5 +10,5 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
-      - run: echo "Hello demo"
+      - run: echo "Hello dem0"
       - run: env | grep "CODEBUILD"
